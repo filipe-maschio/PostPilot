@@ -34,12 +34,21 @@ def job():
         print(f"[ERROR] Job failed: {e}")
 
 
-# Schedule jobs
+# =========================
+# SCHEDULER CONFIG
+# =========================
+
 schedule.every().monday.at("09:00").do(job)
 schedule.every().thursday.at("09:00").do(job)
 
-print("[INFO] Scheduler started...")
 
-while True:
-    schedule.run_pending()
-    time.sleep(60)
+if __name__ == "__main__":
+    # Run once immediately for testing
+    print("[INFO] Running test execution...\n")
+    job()
+
+    print("[INFO] Scheduler started...\n")
+
+    while True:
+        schedule.run_pending()
+        time.sleep(60)

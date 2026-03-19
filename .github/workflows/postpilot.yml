@@ -1,0 +1,29 @@
+name: PostPilot Automation
+
+on:
+  schedule:
+    - cron: '0 12 * * 1,4'  # Segunda e Quinta (09:00 Brasil)
+  workflow_dispatch:
+
+jobs:
+  run-postpilot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run PostPilot
+        run: python run.py
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TWILIO_SID: ${{ secrets.TWILIO_SID }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}

@@ -1,9 +1,15 @@
 import random
 import re
+import os
+from dotenv import load_dotenv
 from openai import OpenAI
+
 from utils.storage import load_posts, load_themes, save_theme
 from utils.formatter import clean_text
 from utils.storage import save_post_with_metadata
+
+# 🔐 Load environment variables
+load_dotenv()
 
 client = OpenAI()
 
@@ -161,7 +167,6 @@ def generate_posts():
     response = client.chat.completions.create(
         model="gpt-5-mini",
         messages=[{"role": "user", "content": build_prompt()}],
-        temperature=0.8,
     )
 
     return parse_posts(response.choices[0].message.content)
