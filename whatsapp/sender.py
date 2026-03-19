@@ -67,7 +67,8 @@ def split_message(text, max_length=MAX_LENGTH):
     lines = text.split("\n")
 
     for line in lines:
-        candidate = (current_chunk + "\n" + line).strip() if current_chunk else line
+        candidate = (current_chunk + "\n" +
+                     line).strip() if current_chunk else line
 
         if len(candidate) <= max_length:
             current_chunk = candidate
@@ -101,8 +102,8 @@ def send_whatsapp_message(content):
         try:
             message = send_with_retry(lambda: client.messages.create(
                 body=chunk,
-                from_=f"{FROM_WHATSAPP}",
-                to=f"{TO_WHATSAPP}"
+                from_=f"whatsapp:{FROM_WHATSAPP}",
+                to=f"whatsapp:{TO_WHATSAPP}"
             ))
 
             print(f"[INFO] Chunk {i} sent. SID: {message.sid}")
