@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambiente virtual
+venv/
+.env
+
+# Dados locais (não versionar)
+data/*.json
+
+# Logs (caso você adicione depois)
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE (opcional mas recomendado)
+.vscode/
+.idea/
