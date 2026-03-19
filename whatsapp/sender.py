@@ -101,8 +101,8 @@ def send_whatsapp_message(content):
         try:
             message = send_with_retry(lambda: client.messages.create(
                 body=chunk,
-                from_=f"whatsapp:{FROM_WHATSAPP}",
-                to=f"whatsapp:{TO_WHATSAPP}"
+                from_=f"{FROM_WHATSAPP}",
+                to=f"{TO_WHATSAPP}"
             ))
 
             print(f"[INFO] Chunk {i} sent. SID: {message.sid}")
