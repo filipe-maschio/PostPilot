@@ -10,7 +10,7 @@ from utils.formatter import clean_text
 # RETRY CONFIG
 # =========================
 
-def retry_job(fn, retries=3, delay=10):
+def retry_job(fn, retries=3, delay=5):
     """
     Retry wrapper for critical operations (e.g., OpenAI calls).
 
