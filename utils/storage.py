@@ -15,9 +15,16 @@ MAX_THEMES = 30
 def load_posts():
     """
     Load stored posts from JSON file.
-    Returns an empty list if file does not exist.
+
+    If the file does not exist, it is automatically created.
+
+    Returns:
+        list: List of stored posts (empty if newly created).
     """
     if not os.path.exists(POSTS_FILE):
+        os.makedirs("data", exist_ok=True)
+        with open(POSTS_FILE, "w", encoding="utf-8") as f:
+            json.dump([], f)
         return []
 
     with open(POSTS_FILE, "r", encoding="utf-8") as f:
@@ -63,12 +70,20 @@ def save_post_with_metadata(post, scores):
 def load_themes():
     """
     Load stored themes from JSON file.
-    Returns an empty list if file does not exist.
+
+    If the file does not exist, it is automatically created
+    along with the required directory structure.
+
+    Returns:
+        list: List of stored themes (empty if newly created).
     """
     if not os.path.exists(THEMES_FILE):
+        os.makedirs("data", exist_ok=True)
+        with open(THEMES_FILE, "w") as f:
+            json.dump([], f)
         return []
 
-    with open(THEMES_FILE, "r", encoding="utf-8") as f:
+    with open(THEMES_FILE, "r") as f:
         return json.load(f)
 
 
