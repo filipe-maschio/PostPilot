@@ -1,22 +1,42 @@
 # Python
 __pycache__/
 *.py[cod]
+*.pyo
+*.pyd
 *$py.class
 
-# Ambiente virtual
+# Virtual environments
 venv/
 .env
+.env.*
 
-# Dados locais (não versionar)
+# Build / Packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Logs & Data
 data/*.json
-
-# Logs (caso você adicione depois)
+logs/
 *.log
+  
+# Secrets
+.env
+.env.local
+.env.production
 
-# OS
-.DS_Store
-Thumbs.db
-
-# IDE (opcional mas recomendado)
+# IDE / Editor
 .vscode/
 .idea/
+*.swp
+
+# OS Files
+.DS_Store
+desktop.ini
+Thumbs.db
+
+# Node
+node_modules/
+
+# Custom
